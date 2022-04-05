@@ -45,8 +45,13 @@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Note</span>
                 <input type="text" class="form-control" readonly class="form-control-plaintext" id="staticEmail" value='<%= arr_data[i] %>'>
-                <a class="btn btn-warning" type="button" id="button-addon1" href="/edit/<%= i %>" >Modify</a>
-                <a class="btn btn-danger" type="button" id="button-addon1" href="/delete/<%= i %>" >Delete</a>
+                <form method="GET" action="/edit/<%= i %>">
+                  <button type="submit" name="id" value="<%= i %>"  class="btn btn-warning btn-lg border-0 rounded-0">Modify</button>
+                </form> 
+                <form method="GET" action="/delete/<%= i %>?_method=delete">
+                  <input type="hidden" name="_method" value="DELETE" name="id" value="<%= i %>" >
+                  <button type="submit" name="id" value="<%= i %>"  class="btn btn-danger btn-lg border-0 rounded-0"">Delete</button>
+                </form>
             </div>  
         <% } %>
       </div>

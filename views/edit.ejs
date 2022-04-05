@@ -47,7 +47,8 @@
                 <div class="card border-secondary">  
                     <div class="card-header">Edit Task</div>
                     <div class="card-body">
-                        <form action="/update" method="POST">
+                      <form method="POST" action="/update?_method=PUT">
+                        <input type="hidden" name="_method" value="PUT" name="id" value="<%= id %>" >
                             <input id="id" name="id" value="<%= id %>" hidden>
                             <div class="mb-3">
                             <label for="task" class="form-label">Task</label>

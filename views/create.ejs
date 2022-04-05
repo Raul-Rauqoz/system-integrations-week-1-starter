@@ -46,6 +46,7 @@
             <div class="card-header">New Task</div>
             <div class="card-body">
               <form action="/create" method="POST">
+                <input type="hidden" name="_method" value="PUT">
                 <div class="mb-3">
                 <label for="task" class="form-label">Task</label>
                 <input type="text" class="form-control" id="task" name="task" tabindex="1">
