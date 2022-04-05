@@ -1,16 +1,17 @@
 {
-  "name": "system-integrations-week-1-starter",
-  "version": "0.0.1",
-  "description": "System Integrations Week 1 Starter",
-  "main": "app.js",
-  "scripts": {
-    "test": "jest"
-  },
-  "keywords": [],
-  "author": "JD",
-  "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.1"
-  }
+	"name": "system-integrations-week-1-starter",
+	"version": "0.0.1",
+	"description": "System Integrations Week 1 Starter",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"test": "jest"
+	},
+	"keywords": [],
+	"author": "JD",
+	"license": "ISC",
+	"dependencies": {
+		"ejs": "^3.1.6",
+		"express": "^4.17.1"
+	}
 }
