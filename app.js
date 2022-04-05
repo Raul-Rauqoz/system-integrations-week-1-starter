@@ -20,12 +20,13 @@ app.set('view engine', 'ejs');
 
 // Enpoints
 
-// app.get('/', (req, res) => {
-// 	res.render('index', { content });
-// });
+app.get('/guia', (req, res) => {
+	res.render('index', { content });
+});
 
 app.get('/', (req, res) => {
-	res.status(200).render('homework', { arr_data });
+	// res.status(200).render('homework', { arr_data });
+	res.status(200).render('project');
 });
 
 app.get('/add', (req, res) => {
@@ -56,6 +57,22 @@ app.get('/mark/:id', (req, res) => {
 app.delete('/delete/:id', (req, res) => {
 	arr_data.splice(req.params.id, 1);
 	res.status(200).redirect('/');
+});
+
+app.post('/imark', (req, res) => {
+	res.status(200).send();
+});
+
+app.post('/icreate', (req, res) => {
+	res.status(200).send();
+});
+
+app.put('/iupdate', (req, res) => {
+	res.status(200).send();
+});
+
+app.delete('/idelete', (req, res) => {
+	res.status(200).send();
 });
 
 // Starting server.
