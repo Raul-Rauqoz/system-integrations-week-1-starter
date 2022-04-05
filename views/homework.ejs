@@ -43,8 +43,18 @@
       <div class="container my-5">
         <% for(var i=0; i<arr_data.length; i++) {%>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Note</span>
-                <input type="text" class="form-control" readonly class="form-control-plaintext" id="staticEmail" value='<%= arr_data[i] %>'>
+                <span class="input-group-text" id="basic-addon1">Task</span>
+                <% if(arr_data[i].mark == false){ %>
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox"  select aria-label="Radio button for following text input" onchange="window.location.href='/mark/<%= i %>'">
+                    </div>
+                    <input type="text" class="form-control" readonly class="form-control-plaintext" id="staticEmail" value='<%= arr_data[i].task %>'>
+                  <% } else{ %>  
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" type="checkbox" checked="checked" select aria-label="Radio button for following text input" onchange="window.location.href='/mark/<%= i %>'">
+                    </div>
+                    <input type="text" class="form-control text-decoration-line-through" readonly class="form-control-plaintext" id="staticEmail" value='<%= arr_data[i].task %>'>
+                <% } %>
                 <form method="GET" action="/edit/<%= i %>">
                   <button type="submit" name="id" value="<%= i %>"  class="btn btn-warning btn-lg border-0 rounded-0">Modify</button>
                 </form> 
