@@ -48,7 +48,7 @@
                 <form method="GET" action="/edit/<%= i %>">
                   <button type="submit" name="id" value="<%= i %>"  class="btn btn-warning btn-lg border-0 rounded-0">Modify</button>
                 </form> 
-                <form method="GET" action="/delete/<%= i %>?_method=delete">
+                <form method="POST" action="/delete/<%= i %>?_method=delete">
                   <input type="hidden" name="_method" value="DELETE" name="id" value="<%= i %>" >
                   <button type="submit" name="id" value="<%= i %>"  class="btn btn-danger btn-lg border-0 rounded-0"">Delete</button>
                 </form>
