@@ -7,6 +7,8 @@ const content = require('./content/cards.json');
 
 let arr_data = [ { task: 'hard-coding', mark: false } ];
 
+let arr_backup = [ 'hard-coding' ];
+
 // Middlewares
 
 app.use(express.static('public'));
@@ -26,7 +28,7 @@ app.get('/guia', (req, res) => {
 
 app.get('/', (req, res) => {
 	// res.status(200).render('homework', { arr_data });
-	res.status(200).render('project');
+	res.status(200).render('project', { arr_backup });
 });
 
 app.get('/add', (req, res) => {
@@ -64,14 +66,20 @@ app.post('/imark', (req, res) => {
 });
 
 app.post('/icreate', (req, res) => {
+	const { task, id } = req.body;
+	arr_backup.push(task);
 	res.status(200).send();
 });
 
 app.put('/iupdate', (req, res) => {
+	const { task, id } = req.body;
+	arr_backup[id] = task;
 	res.status(200).send();
 });
 
 app.delete('/idelete', (req, res) => {
+	const { id } = req.body;
+	arr_backup.splice(id, 1);
 	res.status(200).send();
 });
 

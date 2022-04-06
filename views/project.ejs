@@ -41,6 +41,19 @@
 
     <main class="flex-shrink-0 my-5">
       <div class="container my-5" id="ilista">
+        <% for(var i=0; i<arr_backup.length; i++) {%>
+          <div class="input-group mb-3" id='elista<%= i %>'>
+            
+            <span class="input-group-text" id="basic-addon1" >Task</span>
+            <div class="input-group-text">
+              <input class="form-check-input mt-0" type="checkbox"  select aria-label="Radio button for following text input" onchange='mark("<%= i %>")' id='ickeck<%= i %>'>
+            </div>
+            <input type="text"  class="form-control" readonly class="form-control-plaintext" id='itask<%= i %>' value='<%= arr_backup[i] %>'>
+            <button type="submit" name="id" value=""  class="btn btn-warning btn-lg border-0 rounded-0" onclick='modify_("<%= i %>")'>Modify</button>
+            <button type="submit" name="id" class="btn btn-danger btn-lg border-0 rounded-0" onclick='delete_("<%= i %>")'>Delete</button>
+          </div>
+        </div>
+      <% } %>
        
     </div>
 </main>
@@ -64,8 +77,8 @@
     ></script>
 
     <script>
-        var current = 0;
-        var countelements = 0
+        var current = 0
+        var countelements = parseInt("<%= arr_backup.length %>") - 1
         var group = document.getElementById('ilista')
         function create_() {
             if(current === 0 ){
@@ -85,16 +98,23 @@
                 </div>`
                 let headersList = {
                 "Accept": "*/*",
-                "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+                "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+                "Content-Type": "application/json"
                 }
 
+                let bodyContent = JSON.stringify({
+                    "task" : createormodify,
+                    "id": countelements
+                });
+
                 fetch("http://localhost:3030/icreate", { 
-                method: "POST",
-                headers: headersList
+                  method: "POST",
+                  body: bodyContent,
+                  headers: headersList
                 }).then(function(response) {
-                return response.text();
+                  return response.text();
                 }).then(function(data) {
-                console.log(data);
+                  console.log(data);
                 })
                 
                 group.appendChild(divLista)
@@ -107,16 +127,23 @@
                 current = 0;
                 let headersList = {
                 "Accept": "*/*",
-                "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+                "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+                "Content-Type": "application/json"
                 }
 
+                let bodyContent = JSON.stringify({
+                    "task" : createormodify ,
+                    "id": countelements
+                });
+
                 fetch("http://localhost:3030/iupdate", { 
-                method: "PUT",
-                headers: headersList
+                  method: "PUT",
+                  body: bodyContent,
+                  headers: headersList
                 }).then(function(response) {
-                return response.text();
+                  return response.text();
                 }).then(function(data) {
-                console.log(data);
+                  console.log(data);
                 })
             }
             document.getElementById('icreateormodify').value = '';
@@ -134,16 +161,22 @@
             tempo.remove()
             let headersList = {
             "Accept": "*/*",
-            "User-Agent": "Thunder Client (https://www.thunderclient.com)"
+            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+            "Content-Type": "application/json"
             }
 
+            let bodyContent = JSON.stringify({
+                "id": countelements
+            });
+
             fetch("http://localhost:3030/idelete", { 
-            method: "DELETE",
-            headers: headersList
+              method: "DELETE",
+              body: bodyContent,
+              headers: headersList
             }).then(function(response) {
-            return response.text();
+              return response.text();
             }).then(function(data) {
-            console.log(data);
+              console.log(data);
             })
         }
 
