@@ -43,7 +43,6 @@
       <div class="container my-5" id="ilista">
         <% for(var i=0; i<arr_backup.length; i++) {%>
           <div class="input-group mb-3" id='elista<%= i %>'>
-            
             <span class="input-group-text" id="basic-addon1" >Task</span>
             <div class="input-group-text">
               <input class="form-check-input mt-0" type="checkbox"  select aria-label="Radio button for following text input" onchange='mark("<%= i %>")' id='ickeck<%= i %>'>
@@ -195,7 +194,7 @@
             }
 
             fetch("http://localhost:3030/imark", { 
-            method: "POST",
+            method: "PUT",
             headers: headersList
             }).then(function(response) {
             return response.text();

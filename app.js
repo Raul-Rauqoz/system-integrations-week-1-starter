@@ -61,7 +61,7 @@ app.delete('/delete/:id', (req, res) => {
 	res.status(200).redirect('/');
 });
 
-app.post('/imark', (req, res) => {
+app.put('/imark', (req, res) => {
 	res.status(200).send();
 });
 
